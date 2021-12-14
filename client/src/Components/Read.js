@@ -1,18 +1,18 @@
 import Axios from 'axios';
 
-function ReadEmp(props) {
+async function ReadEmp(props) {
     if (props.empId === '')
       alert('Enter employee ID');
     else{
       console.log(props.empUrl);
-       Axios.get(props.empUrl+'/'+props.empId).then((res)=>{
+       await Axios.get(props.empUrl+'/'+props.empId).then((res)=>{
          console.log(res);
          props.setfirstName(res.data.firstName);
          props.setsurName(res.data.surName);
          props.setEmail(res.data.email);
          props.setDob(res.data.dob);
          props.setGender(res.data.gender);
-        },(error) => {
+        }).catch(error => {
              if (!error.response) {
                  console.log(error);
                  alert('Server not connected')

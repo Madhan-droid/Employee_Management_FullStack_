@@ -71,18 +71,23 @@ const clearFields = () =>{
   setDltee(props.deletee);
 }
 
-const createEmp = () => {
-  CreateEmp(empData);
-}
 const readEmp = () => {
        ReadEmp(empData);
 }
-const updateEmp = () => {
-  UpdateEmp(empData);
-}
-const deleteEmp = () => {
-  DeleteEmp(empData);
-}
+
+const updateDelEmployee = () =>{
+  switch(buttonState){
+  case 'Update' :
+    UpdateEmp(empData);
+     break;
+
+  case 'Delete' :
+    DeleteEmp(empData);
+         break;
+
+  default:
+    CreateEmp(empData);
+}}
 
 const emailValidation = () =>{
   if (buttonState !== 'Delete') {
@@ -97,23 +102,6 @@ else{
        updateDelEmployee();
 }
 }
-
-
-const updateDelEmployee = () =>{
-  switch(buttonState){
-  case 'Update' :
-       updateEmp();
-     break;
-
-  case 'Delete' :
-        deleteEmp();
-         break;
-
-  default:
-      createEmp(empData);
-}}
-
-
 
 const showButtonUp = hideEmpId ?{display :'none'} :{display:'block' ,float:'right'};
 const showButtonDown = buttonState==='Read' ? {display:'none' }: {display:'block' ,float:'right'};
@@ -147,7 +135,7 @@ return (
          </td>
          <td>
         <input type="text" value={empId} id='myEmpId' onChange={(event)=>{
-          setEmpId(event.target.value);}}   />
+          setEmpId(event.target.value);}}  required />
         </td>
       </tr>
       </tbody>

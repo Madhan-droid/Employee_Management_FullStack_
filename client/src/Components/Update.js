@@ -1,13 +1,14 @@
-import Axios from 'axios'
-function UpdateEmp(props) {
+import Axios from 'axios';
+
+async function UpdateEmp(props) {
 if (props.empId === '')
 alert('Enter employee ID');
 else{
-Axios.put((props.empUrl+'/'+props.empId) , { empId : props.empId, firstName: props.firstName, surName:props.surName, email:props.email, dob: props.dob, gender: props.gender }
+await Axios.put((props.empUrl+'/'+props.empId) , { empId : props.empId, firstName: props.firstName, surName:props.surName, email:props.email, dob: props.dob, gender: props.gender }
     ).then((res)=>{
     console.log(res);
     alert('Employee updated successfully');
-    },(error) => {
+    }).catch(error => {
       if (!error.response) {
         console.log(error);
         alert('Server not connected')

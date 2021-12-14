@@ -1,14 +1,14 @@
 import Axios from 'axios';
 
-function DeleteEmp(props) {
+async function DeleteEmp(props) {
 if (props.empId === '')
 alert('Enter employee ID');
 else{
-Axios.delete(props.empUrl+'/'+props.empId).then((res)=>{
+await Axios.delete(props.empUrl+'/'+props.empId).then((res)=>{
  console.log(res);
  alert('Employee deleted successfully');
-  },
-  (error) => {
+  }).catch
+  (error => {
    if (!error.response) {
      console.log(error);
      alert('Server not connected')
