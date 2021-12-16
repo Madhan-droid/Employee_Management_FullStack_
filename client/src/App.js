@@ -24,7 +24,8 @@ function App(props) {
 
   const empUrl=props.empUrl;
   const empData ={
-    firstName,surName,email,dob,gender,empId,empUrl,setfirstName,setsurName,setEmail,setDob,setGender,setEmpId, buttonState,
+    firstName,surName,email,dob,gender,empId,empUrl,buttonState,
+    setfirstName,setsurName,setEmail,setDob,setGender,setEmpId,
   }
   
   
@@ -57,7 +58,8 @@ function App(props) {
     } 
   }
 
-const clearFields = () =>{
+const clearFields = () =>
+{
   setEmpId(props.empId);
   setfirstName(props.firstName);
   setsurName(props.surName);
@@ -71,36 +73,42 @@ const clearFields = () =>{
   setDltee(props.deletee);
 }
 
-const readEmp = () => {
+const readEmp = () => 
+{
        ReadEmp(empData);
 }
 
-const updateDelEmployee = () =>{
-  switch(buttonState){
-  case 'Update' :
-    UpdateEmp(empData);
-     break;
-
-  case 'Delete' :
-    DeleteEmp(empData);
-         break;
-
-  default:
-    CreateEmp(empData);
-}}
+const updateDelEmployee = () =>
+{
+  switch(buttonState)
+    {
+     case 'Update' :
+       UpdateEmp(empData);
+       break;
+     case 'Delete' :
+       DeleteEmp(empData);
+       break;
+     default:
+       CreateEmp(empData);
+    }
+ }
 
 const emailValidation = () =>{
-  if (buttonState !== 'Delete') {
-    if(validator.isEmail(email))
+  if (buttonState !== 'Delete')
+    {
+     if(validator.isEmail(email))
        {
            updateDelEmployee();
         } 
-    else {
+     else 
+      {
           alert("Incorrect email");
-      }}
-else{
-       updateDelEmployee();
-}
+       }
+     }
+  else 
+   {
+     updateDelEmployee();
+    }
 }
 
 const showButtonUp = hideEmpId ?{display :'none'} :{display:'block' ,float:'right'};
