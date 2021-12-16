@@ -26,7 +26,7 @@ async function DeleteEmp(props) {
           console.log(error);
          }
    }
-)}
+}
 }
 
 export default DeleteEmp;
